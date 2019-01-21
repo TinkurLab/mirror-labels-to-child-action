@@ -24,8 +24,6 @@ async function mirrorLabelsToChild() {
   )
   const eventJSON = JSON.parse(eventData)
 
-  console.log('eventJSON', eventJSON)
-
   //set eventAction and eventIssueNumber
   eventAction = eventJSON.action
   eventIssueNumber = eventJSON.issue.number
