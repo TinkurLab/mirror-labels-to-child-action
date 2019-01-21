@@ -36,7 +36,7 @@ workflow "Mirror Labels to Child Issue" {
 }
 
 action "Mirror Labels" {
-  uses = "adamzolyak/monorepo-pr-labeler-action@master"
+  uses = "adamzolyak/mirror-labels-to-child-action@master"
   secrets = ["GITHUB_TOKEN"]
 }
 ```
