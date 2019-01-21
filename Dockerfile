@@ -5,9 +5,9 @@ LABEL "com.github.actions.description"="A GitHub Action to mirror labels to chil
 LABEL "com.github.actions.icon"="copy"
 LABEL "com.github.actions.color"="purple"
 
-LABEL "repository"="http://github.com/waffleio/gh-actions"
-LABEL "homepage"="http://www.waffle.io"
-LABEL "maintainer"="Adam Zolyak <adam@waffle.com>"
+LABEL "repository"="http://github.com/adamzolyak/mirror-labels-to-child-action"
+LABEL "homepage"="http://www.tinkurlab.com"
+LABEL "maintainer"="Adam Zolyak <adam@tinkurlab.com>"
 
 ADD entrypoint.sh /action/entrypoint.sh
 ADD package.json /action/package.json

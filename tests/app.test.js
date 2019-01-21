@@ -24,8 +24,8 @@ describe('mirrorLabelsToChild', () => {
         }
     }`
     parentData = {
-      parentOwner: 'waffleio',
-      parentRepo: 'waffle.io',
+      parentOwner: 'adamzolyak',
+      parentRepo: 'actions-playground',
       parentIssueNumber: '10'
     }
     labelData = [
@@ -61,8 +61,8 @@ describe('mirrorLabelsToChild', () => {
         }
     }`
     parentData = {
-      parentOwner: 'waffleio',
-      parentRepo: 'waffle.io',
+      parentOwner: 'adamzolyak',
+      parentRepo: 'actions-playground',
       parentIssueNumber: '10'
     }
     labelData = []

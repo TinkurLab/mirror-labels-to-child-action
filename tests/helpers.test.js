@@ -6,122 +6,122 @@ octokit.authenticate = jest.fn()
 
 describe('getOwner', () => {
   it('should return owner when passed GITHUB_REPOSITORY env variable', () => {
-    const result = helpers.getOwner('waffleio/waffle.io')
-    expect(result).toBe('waffleio')
+    const result = helpers.getOwner('adamzolyak/actions-playground')
+    expect(result).toBe('adamzolyak')
   })
 })
 
 describe('getRepo', () => {
   it('should return repo when passed GITHUB_REPOSITORY env variable', () => {
-    const result = helpers.getRepo('waffleio/waffle.io')
-    expect(result).toBe('waffle.io')
+    const result = helpers.getRepo('adamzolyak/actions-playground')
+    expect(result).toBe('actions-playground')
   })
 })
 
 describe('getParent', () => {
   it('child of - should return parent info with child owner/repo if parent owner/repo is NOT provided', async () => {
-    const eventOwner = 'waffleio'
-    const eventRepo = 'waffle.io'
+    const eventOwner = 'adamzolyak'
+    const eventRepo = 'actions-playground'
     const issueBody = 'child of #59'
 
     const result = await helpers.getParent(eventOwner, eventRepo, issueBody)
 
-    expect(result.parentOwner).toBe('waffleio')
-    expect(result.parentRepo).toBe('waffle.io')
+    expect(result.parentOwner).toBe('adamzolyak')
+    expect(result.parentRepo).toBe('actions-playground')
     expect(result.parentIssueNumber).toBe('59')
   })
 
   it('child to - should return parent info with child owner/repo if parent owner/repo is NOT provided', async () => {
-    const eventOwner = 'waffleio'
-    const eventRepo = 'waffle.io'
+    const eventOwner = 'adamzolyak'
+    const eventRepo = 'actions-playground'
     const issueBody = 'child to #59'
 
     const result = await helpers.getParent(eventOwner, eventRepo, issueBody)
 
-    expect(result.parentOwner).toBe('waffleio')
-    expect(result.parentRepo).toBe('waffle.io')
+    expect(result.parentOwner).toBe('adamzolyak')
+    expect(result.parentRepo).toBe('actions-playground')
     expect(result.parentIssueNumber).toBe('59')
   })
 
   it('child - should return parent info with child owner/repo if parent owner/repo is NOT provided', async () => {
-    const eventOwner = 'waffleio'
-    const eventRepo = 'waffle.io'
+    const eventOwner = 'adamzolyak'
+    const eventRepo = 'actions-playground'
     const issueBody = 'child #59'
 
     const result = await helpers.getParent(eventOwner, eventRepo, issueBody)
 
-    expect(result.parentOwner).toBe('waffleio')
-    expect(result.parentRepo).toBe('waffle.io')
+    expect(result.parentOwner).toBe('adamzolyak')
+    expect(result.parentRepo).toBe('actions-playground')
     expect(result.parentIssueNumber).toBe('59')
   })
 
   it('mutiline issue body - should return parent info with child owner/repo if parent owner/repo is NOT provided', async () => {
-    const eventOwner = 'waffleio'
-    const eventRepo = 'waffle.io'
+    const eventOwner = 'adamzolyak'
+    const eventRepo = 'actions-playground'
     const issueBody =
       'to do\r\n- [ ] thing\r\n- [x] thing\r\n\r\n[bug, que]\r\nchild of #59'
 
     const result = await helpers.getParent(eventOwner, eventRepo, issueBody)
 
-    expect(result.parentOwner).toBe('waffleio')
-    expect(result.parentRepo).toBe('waffle.io')
+    expect(result.parentOwner).toBe('adamzolyak')
+    expect(result.parentRepo).toBe('actions-playground')
     expect(result.parentIssueNumber).toBe('59')
   })
 
   it('child of - should return parent info with parent owner/repo if parent owner/repo is provided', async () => {
-    const eventOwner = 'waffleio'
-    const eventRepo = 'waffle.io'
-    const issueBody = 'child of waffleio2/waffle.io2#59'
+    const eventOwner = 'adamzolyak'
+    const eventRepo = 'actions-playground'
+    const issueBody = 'child of adamzolyak2/actions-playground2#59'
 
     const result = await helpers.getParent(eventOwner, eventRepo, issueBody)
 
-    expect(result.parentOwner).toBe('waffleio2')
-    expect(result.parentRepo).toBe('waffle.io2')
+    expect(result.parentOwner).toBe('adamzolyak2')
+    expect(result.parentRepo).toBe('actions-playground2')
     expect(result.parentIssueNumber).toBe('59')
   })
 
   it('child to - should return parent info with parent owner/repo if parent owner/repo is provided', async () => {
-    const eventOwner = 'waffleio'
-    const eventRepo = 'waffle.io'
-    const issueBody = 'child to waffleio2/waffle.io2#59'
+    const eventOwner = 'adamzolyak'
+    const eventRepo = 'actions-playground'
+    const issueBody = 'child to adamzolyak2/actions-playground2#59'
 
     const result = await helpers.getParent(eventOwner, eventRepo, issueBody)
 
-    expect(result.parentOwner).toBe('waffleio2')
-    expect(result.parentRepo).toBe('waffle.io2')
+    expect(result.parentOwner).toBe('adamzolyak2')
+    expect(result.parentRepo).toBe('actions-playground2')
     expect(result.parentIssueNumber).toBe('59')
   })
 
   it('child - should return parent info with parent owner/repo if parent owner/repo is provided', async () => {
-    const eventOwner = 'waffleio'
-    const eventRepo = 'waffle.io'
-    const issueBody = 'child waffleio2/waffle.io2#59'
+    const eventOwner = 'adamzolyak'
+    const eventRepo = 'actions-playground'
+    const issueBody = 'child adamzolyak2/actions-playground2#59'
 
     const result = await helpers.getParent(eventOwner, eventRepo, issueBody)
 
-    expect(result.parentOwner).toBe('waffleio2')
-    expect(result.parentRepo).toBe('waffle.io2')
+    expect(result.parentOwner).toBe('adamzolyak2')
+    expect(result.parentRepo).toBe('actions-playground2')
     expect(result.parentIssueNumber).toBe('59')
   })
 
   it('should return parent info with parent owner/repo if parent owner/repo is provided', async () => {
-    const eventOwner = 'waffleio'
-    const eventRepo = 'waffle.io'
+    const eventOwner = 'adamzolyak'
+    const eventRepo = 'actions-playground'
     const issueBody =
-      'to do\r\n- [ ] thing\r\n- [x] thing\r\n\r\n[bug, que]\r\nchild of waffleio3/waffle.io3#59'
+      'to do\r\n- [ ] thing\r\n- [x] thing\r\n\r\n[bug, que]\r\nchild of adamzolyak3/actions-playground3#59'
 
     const result = await helpers.getParent(eventOwner, eventRepo, issueBody)
 
     console.log('multiline result', result)
 
-    expect(result.parentOwner).toBe('waffleio3')
-    expect(result.parentRepo).toBe('waffle.io3')
+    expect(result.parentOwner).toBe('adamzolyak3')
+    expect(result.parentRepo).toBe('actions-playground3')
     expect(result.parentIssueNumber).toBe('59')
   })
 
   it('should return false if no parent relationship', async () => {
-    const eventOwner = 'waffleio'
-    const eventRepo = 'waffle.io'
+    const eventOwner = 'adamzolyak'
+    const eventRepo = 'actions-playground'
     const issueBody = 'this is an issue without a parent'
 
     const result = await helpers.getParent(eventOwner, eventRepo, issueBody)
@@ -140,8 +140,8 @@ describe('addLabel', () => {
 
     const result = await helpers.addLabel(
       octokit,
-      'waffleio',
-      'waffle.io',
+      'adamzolyak',
+      'actions-playground',
       '1',
       ['Incomplete Tasks', 'Help Wanted']
     )
@@ -163,8 +163,8 @@ describe('removeLabel', () => {
 
     const result = await helpers.removeLabel(
       octokit,
-      'waffleio',
-      'waffle.io',
+      'adamzolyak',
+      'actions-playground',
       '1',
       'Incomplete Tasks'
     )
