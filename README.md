@@ -31,12 +31,12 @@ To setup this action:
 
 ```
 workflow "Mirror Labels to Child Issue" {
-  resolves = ["MirrorLabels"]
+  resolves = ["Mirror Labels"]
   on = "issues"
 }
 
-action "MirrorLabels" {
-  uses = "waffleio/gh-actions/action-mirrorlabelstochild@master"
+action "Mirror Labels" {
+  uses = "adamzolyak/monorepo-pr-labeler-action@master"
   secrets = ["GITHUB_TOKEN"]
 }
 ```
