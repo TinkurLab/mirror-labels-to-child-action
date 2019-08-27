@@ -48,7 +48,7 @@ module.exports.getLabels = async function(octokit, owner, repo, issueNumber) {
   const options = octokit.issues.listLabelsOnIssue.endpoint.merge({
     owner: owner,
     repo: repo,
-    number: issueNumber
+    issue_number: issueNumber
   })
 
   return await octokit
@@ -72,61 +72,12 @@ module.exports.addLabel = function(
     .addLabels({
       owner: eventOwner,
       repo: eventRepo,
-      number: eventIssueNumber,
+      issue_number: eventIssueNumber,
       labels: labels
     })
     .then(({ data, headers, status }) => {
       // handle data
     })
-    .catch(err => {
-      console.log(err)
-    })
-}
-
-module.exports.removeLabel = function(
-  octokit,
-  eventOwner,
-  eventRepo,
-  eventIssueNumber,
-  label
-) {
-  octokit.issues
-    .removeLabel({
-      owner: eventOwner,
-      repo: eventRepo,
-      number: eventIssueNumber,
-      name: label
-    })
-    .then(({ data, headers, status }) => {
-      // handle data
-    })
-    .catch(err => {
-      console.log(err)
-    })
-}
-
-module.exports.reopenIssue = function(
-  octokit,
-  eventOwner,
-  eventRepo,
-  eventIssueNumber
-) {
-  octokit.issues
-    .edit({
-      owner: eventOwner,
-      repo: eventRepo,
-      number: eventIssueNumber,
-      state: 'open'
-    })
-    .then(
-      octokit.issues.createComment({
-        owner: eventOwner,
-        repo: eventRepo,
-        number: eventIssueNumber,
-        body:
-          'There is one or more incomplete checklist items on this issue.  Please complete or remove the incomplete checklist items.  Reopening the issue.'
-      })
-    )
     .catch(err => {
       console.log(err)
     })

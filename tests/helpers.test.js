@@ -152,25 +152,3 @@ describe('addLabel', () => {
     ])
   })
 })
-
-describe('removeLabel', () => {
-  it('should remove label from issue', async () => {
-    let octokit = {
-      issues: {
-        removeLabel: jest.fn().mockResolvedValue({ something: 'something' })
-      }
-    }
-
-    const result = await helpers.removeLabel(
-      octokit,
-      'adamzolyak',
-      'actions-playground',
-      '1',
-      'Incomplete Tasks'
-    )
-    expect(octokit.issues.removeLabel).toHaveBeenCalledTimes(1)
-    expect(octokit.issues.removeLabel.mock.calls[0][0].name).toEqual(
-      'Incomplete Tasks'
-    )
-  })
-})
