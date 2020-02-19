@@ -1,0 +1,8 @@
+name: "Mirror Labels to Child"
+description: "Mirror Labels to Child"
+runs:
+  using: "docker"
+  image: "Dockerfile"
+branding:
+  icon: "copy"
+  color: "green"
