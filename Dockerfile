@@ -5,7 +5,7 @@ LABEL "com.github.actions.description"="Mirror labels from a parent to child iss
 LABEL "com.github.actions.icon"="copy"
 LABEL "com.github.actions.color"="green"
 
-LABEL "repository"="http://github.com/adamzolyak/mirror-labels-to-child-action"
+LABEL "repository"="http://github.com/tinkurlab/mirror-labels-to-child-action"
 LABEL "homepage"="http://www.tinkurlab.com"
 LABEL "maintainer"="Adam Zolyak <adam@tinkurlab.com>"
 

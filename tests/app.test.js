@@ -24,17 +24,17 @@ describe('mirrorLabelsToChild', () => {
         }
     }`
     parentData = {
-      parentOwner: 'adamzolyak',
+      parentOwner: 'tinkurlab',
       parentRepo: 'actions-playground',
-      parentIssueNumber: '10'
+      parentIssueNumber: '10',
     }
     labelData = [
       {
-        name: 'label 1'
+        name: 'label 1',
       },
       {
-        name: 'label 2'
-      }
+        name: 'label 2',
+      },
     ]
 
     await app.mirrorLabelsToChild()
@@ -61,9 +61,9 @@ describe('mirrorLabelsToChild', () => {
         }
     }`
     parentData = {
-      parentOwner: 'adamzolyak',
+      parentOwner: 'tinkurlab',
       parentRepo: 'actions-playground',
-      parentIssueNumber: '10'
+      parentIssueNumber: '10',
     }
     labelData = []
 

@@ -40,7 +40,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Label PRs
-        uses: adamzolyak/mirror-labels-to-child-action@master
+        uses: tinkurlab/mirror-labels-to-child-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
@@ -53,4 +53,4 @@ If you have suggestions for how this GitHub Action could be improved, or want to
 
 ## License
 
-[ISC](LICENSE) © 2019 Adam Zolyak <adam@tinkurlab.com> (www.tinkurlab.com)
+[ISC](LICENSE) © 2021 Adam Zolyak <adam@tinkurlab.com> (www.tinkurlab.com)
