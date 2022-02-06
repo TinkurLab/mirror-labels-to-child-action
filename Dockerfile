@@ -1,4 +1,4 @@
-FROM node:8-slim
+FROM node:14
 
 LABEL "com.github.actions.name"="Mirror Labels to Child"
 LABEL "com.github.actions.description"="Mirror labels from a parent to child issues"
