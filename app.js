@@ -4,9 +4,9 @@ const helpers = require('./helpers')
 
 //require octokit rest.js
 //more info at https://github.com/octokit/rest.js
-const Octokit = require('@octokit/rest')
+const { Octokit } = require('@octokit/rest')
 const octokit = new Octokit({
-  auth: `token ${process.env.GITHUB_TOKEN}`
+  auth: `token ${process.env.GITHUB_TOKEN}`,
 })
 
 //set eventOwner and eventRepo based on action's env variables
@@ -16,9 +16,7 @@ const eventRepo = helpers.getRepo(eventOwnerAndRepo)
 
 async function mirrorLabelsToChild() {
   //read contents of action's event.json
-  const eventData = await helpers.readFilePromise(
-    '..' + process.env.GITHUB_EVENT_PATH
-  )
+  const eventData = await helpers.readFilePromise('..' + process.env.GITHUB_EVENT_PATH)
   const eventJSON = JSON.parse(eventData)
 
   //set eventAction and eventIssueNumber
@@ -26,17 +24,9 @@ async function mirrorLabelsToChild() {
   eventIssueNumber = eventJSON.issue.number
   eventIssueBody = eventJSON.issue.body
 
-  if (
-    eventAction === 'opened' ||
-    eventAction === 'edited' ||
-    eventAction === 'reopened'
-  ) {
+  if (eventAction === 'opened' || eventAction === 'edited' || eventAction === 'reopened') {
     //check if there is a parent relationship in the issue
-    let issueParent = await helpers.getParent(
-      eventOwner,
-      eventRepo,
-      eventIssueBody
-    )
+    let issueParent = await helpers.getParent(eventOwner, eventRepo, eventIssueBody)
 
     if (issueParent) {
       const parentLabels = await helpers.getLabels(
@@ -51,13 +41,7 @@ async function mirrorLabelsToChild() {
 
         console.log('parent w/ labels - labeling child')
 
-        helpers.addLabel(
-          octokit,
-          eventOwner,
-          eventRepo,
-          eventIssueNumber,
-          labelsToAdd
-        )
+        helpers.addLabel(octokit, eventOwner, eventRepo, eventIssueNumber, labelsToAdd)
       } else {
         console.log('parent w/o labels - NOT labeling child')
       }
